@@ -101,9 +101,6 @@ def main():
                 text_chunks = get_text_chunks(raw_text)
                 get_vector_store(text_chunks)
                 st.success("Done")
-    if not gemini_api_key:
-        st.info("Please add your OpenAI API key to continue.")
-        st.stop()
 
     # Main content area for displaying chat messages
     st.title("Chat with PDF files using Gemini🤖")
