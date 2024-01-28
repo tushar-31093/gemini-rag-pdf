@@ -10,7 +10,11 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
 
 # read all pdf files and return text
-genai.configure(api_key=gemini_api_key)
+# Create a text box in the sidebar to capture the API key
+gemini_api_key = st.sidebar.text_input("Enter your Gemini API key:", type="password")
+# Configure the API key only when it's provided
+if gemini_api_key:
+    genai.configure(api_key=gemini_api_key)
 
 def get_pdf_text(pdf_docs):
     text = ""
