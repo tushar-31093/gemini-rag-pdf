@@ -50,7 +50,7 @@ def get_conversational_chain():
     """
 
     model = ChatGoogleGenerativeAI(model="gemini-pro",
-                                   client=genai,
+                                   client=genai.configure(api_key=gemini_api_key),
                                    temperature=0.3,
                                    )
     prompt = PromptTemplate(template=prompt_template,
