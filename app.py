@@ -71,7 +71,9 @@ def clear_chat_history():
 
 def user_input(user_question):
     embeddings = GoogleGenerativeAIEmbeddings(
-        model="models/embedding-001")  # type: ignore
+        model="models/embedding-001",
+    client=genai,
+    temperature=0.3,)  # type: ignore
 
     new_db = FAISS.load_local("faiss_index", embeddings)
     docs = new_db.similarity_search(user_question)
