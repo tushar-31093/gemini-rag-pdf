@@ -9,8 +9,12 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
 
+
+load_dotenv()
+os.getenv("GOOGLE_API_KEY")
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+
 # read all pdf files and return text
-genai.configure(api_key="AIzaSyA-_c5Zy6o1JImgRF9aB8CY-eh6spySPdE")
 
 def get_pdf_text(pdf_docs):
     text = ""
