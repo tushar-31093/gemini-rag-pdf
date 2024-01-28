@@ -90,6 +90,7 @@ def main():
     with st.sidebar:
         st.title("Menu:")
         gemini_api_key = st.text_input("Gemini API Key", key="chatbot_api_key", type="password")
+        st.session_state["gemini_api_key"] = gemini_api_key
         genai.configure(api_key=gemini_api_key)
         pdf_docs = st.file_uploader(
             "Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True)
