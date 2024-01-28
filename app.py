@@ -12,7 +12,7 @@ from langchain.prompts import PromptTemplate
 from htmlTemplates import css, bot_template, user_template
 
 
-gemini_key = st.secrets["GOOGLE_API_KEY"]
+gemini_key = st.secrets["geminiDetails"]["GOOGLE_API_KEY"]
 genai.configure(api_key=gemini_key)
 
 def get_pdf_text(pdf_docs):
