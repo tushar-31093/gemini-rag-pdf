@@ -10,7 +10,7 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
 
 # read all pdf files and return text
-
+genai.configure(api_key="AIzaSyA-_c5Zy6o1JImgRF9aB8CY-eh6spySPdE")
 
 def get_pdf_text(pdf_docs):
     text = ""
@@ -66,7 +66,7 @@ def clear_chat_history():
 
 def user_input(user_question):
     embeddings = GoogleGenerativeAIEmbeddings(
-        model="models/embedding-001", client=genai)  # type: ignore
+        model="models/embedding-001")  # type: ignore
 
     new_db = FAISS.load_local("faiss_index", embeddings)
     docs = new_db.similarity_search(user_question)
@@ -86,10 +86,10 @@ def main():
         page_icon="🤖"
     )
     # Create a text box in the sidebar to capture the API key
-    gemini_api_key = st.sidebar.text_input("Enter your Gemini API key:", type="password")
-    # Configure the API key only when it's provided
-    if gemini_api_key:
-        genai.configure(api_key=gemini_api_key)
+    # gemini_api_key = st.sidebar.text_input("Enter your Gemini API key:", type="password")
+    # # Configure the API key only when it's provided
+    # if gemini_api_key:
+    #     genai.configure(api_key=gemini_api_key)
     # Sidebar for uploading PDF files
     with st.sidebar:
         st.title("Menu:")
