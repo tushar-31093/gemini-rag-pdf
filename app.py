@@ -9,8 +9,6 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
 
-genai.configure(api_key=gemini_api_key)
-
 # read all pdf files and return text
 
 
@@ -92,6 +90,7 @@ def main():
     with st.sidebar:
         st.title("Menu:")
         gemini_api_key = st.text_input("Gemini API Key", key="chatbot_api_key", type="password")
+        genai.configure(api_key=gemini_api_key)
         pdf_docs = st.file_uploader(
             "Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True)
         if st.button("Submit & Process"):
