@@ -50,7 +50,7 @@ def get_conversation_chain():
     return chain
 
 def user_input(user_question):
-    embeddings = GoogleGenerativeAIEmbeddings(model='models/embedding-001')
+    embeddings = GoogleGenerativeAIEmbeddings(model='models/embedding-001', google_api_key = gemini_key)
     new_db = FAISS.load_local("faiss_index", embeddings)
     docs = new_db.similarity_search(user_question)
 
