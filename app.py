@@ -10,7 +10,7 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
 
 # read all pdf files and return text
-
+genai.configure(api_key=gemini_api_key)
 
 def get_pdf_text(pdf_docs):
     text = ""
@@ -50,7 +50,7 @@ def get_conversational_chain():
     """
 
     model = ChatGoogleGenerativeAI(model="gemini-pro",
-                                   client=genai.configure(api_key=gemini_api_key),
+                                   client=genai,
                                    temperature=0.3,
                                    )
     prompt = PromptTemplate(template=prompt_template,
@@ -91,7 +91,7 @@ def main():
         st.title("Menu:")
         gemini_api_key = st.text_input("Gemini API Key", key="chatbot_api_key", type="password")
         st.session_state["gemini_api_key"] = gemini_api_key
-        genai.configure(api_key=gemini_api_key)
+        
         pdf_docs = st.file_uploader(
             "Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True)
         if st.button("Submit & Process"):
