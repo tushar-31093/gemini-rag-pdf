@@ -1,4 +1,5 @@
 streamlit
+langchain-community
 google-generativeai
 python-dotenv
 langchain
